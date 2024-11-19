@@ -1,0 +1,35 @@
+<div class="catalog-container">
+  <h1>Catalogue de Produits</h1>
+  <div class="card-grid">
+    <div class="card" *ngFor="let product of products">
+      <img [src]="product.imageUrl" alt="Image du produit" />
+      <div class="card-content">
+        <h3>{{ product.name }}</h3>
+        <p class="category">Catégorie : {{ product.category }}</p>
+        <p>{{ product.description }}</p>
+        <div class="card-actions">
+          <button class="btn" (click)="addToCart(product)">Acheter</button>
+          <button class="btn">Détails</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Produits dans le panier</h2>
+  <div>
+    <ul *ngIf="cart.length > 0">
+      <li *ngFor="let item of cart">
+        {{ item.name }} - {{ item.category }}
+      </li>
+    </ul>
+    <p *ngIf="cart.length === 0">Votre panier est vide.</p>
+
+    <!-- Bouton toujours affiché -->
+    <button 
+      class="btn delete-btn" 
+      (click)="clearCart()" 
+      [disabled]="cart.length === 0">
+      Supprimer tout
+    </button>
+  </div>
+</div>

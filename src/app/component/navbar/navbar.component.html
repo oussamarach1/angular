@@ -1,0 +1,10 @@
+<!-- src/app/navbar/navbar.component.html -->
+<nav class="navbar">
+    <div class="navbar-brand">Mon Application</div>
+    <ul class="navbar-links">
+      <li *ngFor="let link of links">
+        <a [routerLink]="link.path">{{ link.name }}</a>
+      </li>
+    </ul>
+  </nav>
+  
